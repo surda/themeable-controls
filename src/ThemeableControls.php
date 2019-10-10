@@ -18,6 +18,16 @@ trait ThemeableControls
     }
 
     /**
+     * @param array $templates
+     */
+    public function setTemplates(array $templates): void
+    {
+        foreach ($templates as $type => $template) {
+            $this->setTemplateByType((string) $type, $template);
+        }
+    }
+
+    /**
      * @param string $type
      * @param string $templateFile
      * @throws InvalidArgumentException
