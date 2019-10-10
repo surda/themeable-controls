@@ -25,7 +25,7 @@ class ThemeableControlsTest extends TestCase
         Assert::same($template, $mock->getTemplateByType('default'));
     }
 
-    public function testTemplates()
+    public function testTemplateByType()
     {
         $template1 = __DIR__ . '/files/template1.latte';
         $template2 = __DIR__ . '/files/template2.latte';
@@ -34,7 +34,6 @@ class ThemeableControlsTest extends TestCase
         $mock->setTemplateByType('default', $template1);
         $mock->setTemplateByType('foo', $template2);
 
-        Assert::same($template1, $mock->getDefaultTemplate());
         Assert::same($template1, $mock->getTemplateByType('default'));
         Assert::same($template2, $mock->getTemplateByType('foo'));
     }

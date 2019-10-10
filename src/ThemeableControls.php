@@ -24,11 +24,13 @@ trait ThemeableControls
      */
     public function setTemplateByType(string $type, string $templateFile): void
     {
-        if (!file_exists($templateFile)) {
+        $realTemplateFile = realpath($templateFile);
+
+        if ($realTemplateFile === FALSE) {
             throw new InvalidArgumentException(sprintf("Template file '%s' does not exist.", $templateFile));
         }
 
-        $this->templates[$type] = $templateFile;
+        $this->templates[$type] = $realTemplateFile;
     }
 
     /**
